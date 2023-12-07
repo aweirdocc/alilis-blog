@@ -9,5 +9,5 @@ pageClass: home-page-wrapper
 <Home />
 
 <script  setup>
-  import Home from '../pages/home.vue'
+  import Home from './.vitepress/theme/views/home.vue'
 </script>

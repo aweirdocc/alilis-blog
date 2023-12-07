@@ -48,11 +48,11 @@ export default defineConfig({
     ["meta", { name: "keywords", content: "alilis的个人文档站" }],
 
     // 引入 Gitalk
-    // [
-    //   "link",
-    //   { rel: "stylesheet", href: "https://unpkg.com/gitalk/dist/gitalk.css" },
-    // ],
-    // ["script", { src: "https://unpkg.com/gitalk/dist/gitalk.min.js" }],
+    [
+      "link",
+      { rel: "stylesheet", href: "https://unpkg.com/gitalk/dist/gitalk.css" },
+    ],
+    ["script", { src: "https://unpkg.com/gitalk/dist/gitalk.min.js" }],
   ],
 
   themeConfig: {

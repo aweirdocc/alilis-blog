@@ -33,7 +33,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vitepress'
 import { data as posts } from './posts.data.js'
-import { usePostList } from './hooks'
+import { usePostList } from '../hooks/index'
 
 const router = useRouter();
 const sidebar = ref(usePostList(posts));
