@@ -18,17 +18,17 @@ function initDocsSidebar() {
       base: '/blogs/2023/',
       items: [
         {
-          text: 'Vue3 基础',
-          link: 'vue3-basic',
-          description: 'Vue3 基础知识汇总'
+          text: 'Start With Alilis',
+          link: 'alilis',
+          description: '第一篇博文'
         },
       ]
-    },
+    }
   ]
 }
 
 export default defineConfig({
-  title: "Alilis's Blog",
+  title: "Alilis",
   description: "This is alilis's personal blog site with something talks.",
   lang: 'zh-CH',
 
