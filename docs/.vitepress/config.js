@@ -1,34 +1,34 @@
 import { defineConfig } from 'vitepress';
 
 function initNavData() {
-  const blogs = initDocsSidebar();
-  const firstBlog = blogs.length ? blogs[0] : null;
+  // const blogs = initDocsSidebar();
+  // const firstBlog = blogs.length ? blogs[0] : null;
 
   return [
     { text: "首页", link: "index" },
-    { text: "博文", link: `${firstBlog.base}${firstBlog.items[0].link}`, activeMatch: '^/blogs/' },
+    // { text: "博文", link: `${firstBlog.base}${firstBlog.items[0].link}`, activeMatch: '^/blogs/' },
   ]
 }
 
-function initDocsSidebar() {
-  return [
-    {
-      text: "2023",
-      collapsed: false, // 可折叠
-      base: '/blogs/2023/',
-      items: [
-        {
-          text: 'Start With Alilis',
-          link: 'alilis',
-          description: '第一篇博文'
-        },
-      ]
-    }
-  ]
-}
+// function initDocsSidebar() {
+//   return [
+//     {
+//       text: "2023",
+//       collapsed: false, // 可折叠
+//       base: '/blogs/2023/',
+//       items: [
+//         {
+//           text: 'Start With Alilis',
+//           link: 'alilis',
+//           description: '第一篇博文'
+//         },
+//       ]
+//     }
+//   ]
+// }
 
 export default defineConfig({
-  title: "Alilis",
+  title: "ALilis",
   description: "This is alilis's personal blog site with something talks.",
   lang: 'zh-CH',
 
@@ -68,7 +68,7 @@ export default defineConfig({
 
     nav: initNavData(),
 
-    sidebar: initDocsSidebar(),
+    // sidebar: initDocsSidebar(),
 
     footer: {
       message: 'Released under the MIT License.',

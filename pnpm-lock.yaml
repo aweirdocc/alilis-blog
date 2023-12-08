@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@giscus/vue': ^2.3.0
-  '@weebat/utils': ^0.0.1
+  '@weebat/utils': ^0.0.3
   gray-matter: ^4.0.3
   medium-zoom: ^1.1.0
   sass: ^1.69.5
@@ -10,13 +10,13 @@ specifiers:
   vue: ^3.3.8
 
 dependencies:
-  '@weebat/utils': registry.npmmirror.com/@weebat/utils/0.0.1
   gray-matter: registry.npmmirror.com/gray-matter/4.0.3
   medium-zoom: registry.npmmirror.com/medium-zoom/1.1.0
   vue: registry.npmmirror.com/vue/3.3.8
 
 devDependencies:
   '@giscus/vue': registry.npmmirror.com/@giscus/vue/2.3.0_vue@3.3.8
+  '@weebat/utils': registry.npmmirror.com/@weebat/utils/0.0.3
   sass: registry.npmmirror.com/sass/1.69.5
   vitepress: registry.npmmirror.com/vitepress/1.0.0-rc.25_sass@1.69.5
 
@@ -778,11 +778,11 @@ packages:
       - vue
     dev: true
 
-  registry.npmmirror.com/@weebat/utils/0.0.1:
-    resolution: {integrity: sha512-D+7Q3swMHE11quxirv89m8qTzZjdUgUFDAAsiuBEuqsA5jkHGfcgUS4QoTG+d2c2Q2w7Ne4Placuv1kBV2mpuw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@weebat/utils/-/utils-0.0.1.tgz}
+  registry.npmmirror.com/@weebat/utils/0.0.3:
+    resolution: {integrity: sha512-UqBkY0cz3JAlUppyx1Xhk+UiwozDnT8STE8YNA7+hP+GuPTsDoolUFRci2C8Mk/Ohm5rbQpawN3tgyse5PGZnw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@weebat/utils/-/utils-0.0.3.tgz}
     name: '@weebat/utils'
-    version: 0.0.1
-    dev: false
+    version: 0.0.3
+    dev: true
 
   registry.npmmirror.com/algoliasearch/4.20.0:
     resolution: {integrity: sha512-y+UHEjnOItoNy0bYO+WWmLWBlPwDjKHW6mNHrPi0NkuhpQOOEbrkwQH/wgKFDLh7qlKjzoKeiRtlpewDPDG23g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/algoliasearch/-/algoliasearch-4.20.0.tgz}

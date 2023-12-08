@@ -13,11 +13,11 @@
   "license": "MIT",
   "devDependencies": {
     "@giscus/vue": "^2.3.0",
+    "@weebat/utils": "^0.0.3",
     "sass": "^1.69.5",
     "vitepress": "^1.0.0-rc.25"
   },
   "dependencies": {
-    "@weebat/utils": "^0.0.1",
     "gray-matter": "^4.0.3",
     "medium-zoom": "^1.1.0",
     "vue": "^3.3.8"

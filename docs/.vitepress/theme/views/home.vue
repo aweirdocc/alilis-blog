@@ -10,15 +10,22 @@
     </figure> -->
 
     <section class="posts-bar" v-if="sidebar.size">
-      <div class="posts-block" v-for="([year, posts]) in sidebar.entries()">
+      <div class="posts-block" v-for="([year, posts], index) in sidebar.entries()">
         <template v-if="posts.length">
-          <div class="years">{{ year }}年</div>
+          <div class="years">{{ year }}年
+            <i class="rank-icon" v-if="index === 0" @click="rankChanged">
+              <rank-icon :icon-type="iconType" />
+            </i>
+          </div>
 
-          <ul v-for="(post, index) in posts">
-            <li class="posts" @click.stop="goto(`${post.url}`)">
-              <span class="post-title">{{ `${post.titleTemplate}` }}</span>
-                <span class="dotted"></span>
-                <span class="post-create-date">{{ post.createDate.slice(0, 10) }}</span>
+          <ul>
+            <li v-for="(post, index) in posts" class="posts" @click.stop="goto(`${post.url}`)">
+              <p class="post-title">
+                {{ `${post.titleTemplate}` }}
+                <span class="tags" @click.stop="handleTag(post.tag)">[ {{ post.tag }} ]</span>
+              </p>
+              <span class="dotted"></span>
+              <span class="post-create-date">{{ post.createDate.slice(0, 10) }}</span>
             </li>
           </ul>
         </template>
@@ -26,25 +33,81 @@
     </section>
 
     <section class="empty-bar" v-else></section>
+
+    <section class="bg"></section>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vitepress'
+import { ref, watch, computed } from 'vue'
+import { useRouter, useData } from 'vitepress'
 import { data as posts } from './posts.data.js'
 import { usePostList } from '../hooks/index'
+import rankIcon from './rankIcon.vue'
+import { setObjToUrlParams, getUrlParams } from '@weebat/utils'
 
 const router = useRouter();
 const sidebar = ref(usePostList(posts));
 
+const { isDark } = useData();
+const iconType = ref('down');
+const iconColor = ref('#fff');
+
+watch(
+  () => isDark.value,
+  (val) => {
+    if (val) {
+      iconColor.value = '#fff';
+    } else {
+      iconColor.value = '#000';
+    }
+  },
+  {
+    immediate: true
+  }
+)
+
+const queryParams = computed(() => {
+  return `${window.location.href}`
+})
+
+watch(
+  () => queryParams.value,
+  async (val) => {
+    if (val) {
+      const q = getUrlParams(val).get('tag');
+
+
+      q && (sidebar.value = usePostList(posts, q, iconType.value === 'down' ? 1 : 0));
+    }
+  },
+  {
+    immediate: true
+  }
+)
+
 const goto = (params) => {
   router.go(params)
 }
+
+const rankChanged = () => {
+  iconType.value === 'down' ? iconType.value = 'up' : iconType.value = 'down';
+
+  sidebar.value = usePostList(posts, '', iconType.value === 'down' ? 1 : 0);
+}
+
+const handleTag = (tag) => {
+  const path = router.route.path;
+  const params = setObjToUrlParams(path, { tag });
+
+  window.location.search = params;
+}
+
 </script>
 
 <style lang="scss" scoped>
 .home-page-content {
+  position: relative;
   width: 100%;
   height: 100%;
   overflow-y: auto;
@@ -52,9 +115,11 @@ const goto = (params) => {
 }
 
 .posts-bar {
+  position: relative;
   width: 55%;
   height: 100%;
   margin: 4em auto;
+  z-index: 9;
 
   .posts-block+.posts-block {
     margin-top: 2em;
@@ -85,14 +150,40 @@ const goto = (params) => {
       font-weight: 600;
     }
   }
-}
 
-@media screen and (max-width: 767px) {
-  /* 手机端样式 */
-  .posts-bar {
-    width: 85%;
-    margin: 2em auto;
+  .posts+.posts {
+    margin-top: 1rem;
+  }
+
+  .rank-icon {
+    display: block;
+    float: right;
+    cursor: pointer;
+
+    .icon {
+      fill: v-bind(iconColor);
+    }
+  }
+
+  .tags {
+    text-decoration: underline;
   }
 }
 
+.bg {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+
+@media screen and (max-width: 767px) {
+
+  /* 手机端样式 */
+  .posts-bar {
+    width: 88%;
+    margin: 2em auto;
+  }
+}
 </style>
