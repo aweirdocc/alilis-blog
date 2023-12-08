@@ -12,10 +12,14 @@
     <section class="posts-bar" v-if="sidebar.size">
       <div class="posts-block" v-for="([year, posts], index) in sidebar.entries()">
         <template v-if="posts.length">
-          <div class="years">{{ year }}年
-            <i class="rank-icon" v-if="index === 0" @click="rankChanged">
-              <rank-icon :icon-type="iconType" />
-            </i>
+          <div class="years">
+            <span>{{ year }}年</span>
+
+            <p>
+              <i class="rank-icon" v-if="index === 0" @click="rankChanged">
+                <rank-icon :icon-type="iconType" />
+              </i>
+            </p>
           </div>
 
           <ul>
@@ -125,6 +129,9 @@ const handleTag = (tag) => {
   }
 
   .years {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 1em;
