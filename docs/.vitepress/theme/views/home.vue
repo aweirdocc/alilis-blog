@@ -77,8 +77,7 @@ watch(
     if (val) {
       const q = getUrlParams(val).get('tag');
 
-
-      q && (sidebar.value = usePostList(posts, q, iconType.value === 'down' ? 1 : 0));
+      sidebar.value = usePostList(posts, q || '', iconType.value === 'down' ? 1 : 0);
     }
   },
   {
