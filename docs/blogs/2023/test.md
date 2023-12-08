@@ -3,7 +3,7 @@ title: 2023
 titleTemplate: Test
 description: Test
 createDate: 2023-12-10
-tag: '随记'
+tag: 'test'
 ---
 
 # Test
