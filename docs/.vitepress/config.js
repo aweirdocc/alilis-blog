@@ -2,31 +2,11 @@ import { defineConfig } from 'vitepress';
 import ElementPlus from 'unplugin-element-plus/vite'
 
 function initNavData() {
-  // const blogs = initDocsSidebar();
-  // const firstBlog = blogs.length ? blogs[0] : null;
-
   return [
     { text: "首页", link: "index" },
     // { text: "博文", link: `${firstBlog.base}${firstBlog.items[0].link}`, activeMatch: '^/blogs/' },
   ]
 }
-
-// function initDocsSidebar() {
-//   return [
-//     {
-//       text: "2023",
-//       collapsed: false, // 可折叠
-//       base: '/blogs/2023/',
-//       items: [
-//         {
-//           text: 'Start With Alilis',
-//           link: 'alilis',
-//           description: '第一篇博文'
-//         },
-//       ]
-//     }
-//   ]
-// }
 
 export default defineConfig({
   title: "ALilis",

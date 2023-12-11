@@ -39,9 +39,7 @@
       </div>
     </section>
 
-    <section class="empty-bar" v-else></section>
-
-    <section class="bg"></section>
+    <!-- <section class="bg"></section> -->
   </div>
 </template>
 
