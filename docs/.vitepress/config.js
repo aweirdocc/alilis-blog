@@ -90,6 +90,10 @@ export default defineConfig({
     plugins: [
       ElementPlus(),
     ],
+    // https://github.com/antfu/vite-ssg/issues/171
+    ssr: {
+      noExternal: ['element-plus']
+    }
   },
 
   ignoreDeadLinks: true
