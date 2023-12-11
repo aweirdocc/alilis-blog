@@ -13,7 +13,10 @@
       <div class="posts-block" v-for="([year, posts], index) in sidebar.entries()">
         <template v-if="posts.length">
           <div class="years">
-            <span>{{ year }}年</span>
+            <p>
+              <span>{{ year }}年</span>
+              <el-tag v-if="tag" class="post-tag" type="success" round closable @close="handleCloseTag">{{ tag }}</el-tag>
+            </p>
 
             <p>
               <i class="rank-icon" v-if="index === 0" @click="rankChanged">
@@ -43,6 +46,7 @@
 </template>
 
 <script setup>
+import { ElTag } from 'element-plus'
 import { ref, watch, computed } from 'vue'
 import { useRouter, useData } from 'vitepress'
 import { data as posts } from './posts.data.js'
@@ -56,6 +60,7 @@ const sidebar = ref(usePostList(posts));
 const { isDark } = useData();
 const iconType = ref('down');
 const iconColor = ref('#fff');
+const tag = ref('');
 
 watch(
   () => isDark.value,
@@ -80,7 +85,8 @@ watch(
   async (val) => {
     if (val) {
       const q = getUrlParams(val).get('tag');
-
+    
+      tag.value = q;
       sidebar.value = usePostList(posts, q || '', iconType.value === 'down' ? 1 : 0);
     }
   },
@@ -104,6 +110,12 @@ const handleTag = (tag) => {
   const params = setObjToUrlParams(path, { tag });
 
   window.location.search = params;
+}
+
+const handleCloseTag = () => {
+  tag.value = '';
+
+  window.location.search = '';
 }
 
 </script>
@@ -183,6 +195,10 @@ const handleTag = (tag) => {
   z-index: 1;
 }
 
+
+.post-tag {
+  margin-left: 10px;
+}
 
 @media screen and (max-width: 767px) {
 

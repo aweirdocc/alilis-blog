@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress';
+import ElementPlus from 'unplugin-element-plus/vite'
 
 function initNavData() {
   // const blogs = initDocsSidebar();
@@ -82,6 +83,12 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/aweirdocc' },
+    ],
+  },
+
+  vite: {
+    plugins: [
+      ElementPlus(),
     ],
   },
 
