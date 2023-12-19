@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress';
-import ElementPlus from 'unplugin-element-plus/vite'
+import ElementPlus from 'unplugin-element-plus/vite';
+import handleHeadMeta from './utils/handleHeadMeta';
 
 function initNavData() {
   return [
@@ -26,7 +27,7 @@ export default defineConfig({
           "width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no",
       },
     ],
-    ["meta", { name: "keywords", content: "alilis的个人文档站" }],
+    ["meta", { name: "keywords", content: "Alilis的个人博客站" }],
 
     // 引入 Gitalk
     [
@@ -36,8 +37,13 @@ export default defineConfig({
     ["script", { src: "https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js" }],
   ],
 
+  // https://vitepress.dev/reference/site-config#transformhead
+	async transformHead(context) {
+		return handleHeadMeta(context);
+	},
+
   themeConfig: {
-    logo: { src: 'https://img.alilis.space/favicon-32x32.png', width: 24, height: 24 },
+    logo: { src: '/favicon.png', width: 24, height: 24 },
     outline: [2, 5],  // 识别<h2>-<h4>的标题
     outlineTitle: '本页目录',
     lastUpdatedText: '上次更新',

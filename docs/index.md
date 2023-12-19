@@ -1,4 +1,6 @@
 ---
+title: Alilis 博客站
+description: Alilis 的博客站会记录一些日常，分享前端及各种知识。
 layout: page
 titleTemplate: false
 
