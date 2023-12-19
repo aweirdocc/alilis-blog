@@ -17,7 +17,7 @@ export default defineConfig({
   cleanUrls: false,
 
   head: [
-    ["link", { rel: "icon", type: 'image/png', href: "/favicon.png" }],
+    ["link", { rel: "icon", type: 'image/png', href: "https://img.alilis.space/favicon-32x32.png" }],
     [
       "meta",
       {
@@ -31,9 +31,9 @@ export default defineConfig({
     // 引入 Gitalk
     [
       "link",
-      { rel: "stylesheet", href: "https://unpkg.com/gitalk/dist/gitalk.css" },
+      { rel: "stylesheet", href: "https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.css" },
     ],
-    ["script", { src: "https://unpkg.com/gitalk/dist/gitalk.min.js" }],
+    ["script", { src: "https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js" }],
   ],
 
   themeConfig: {

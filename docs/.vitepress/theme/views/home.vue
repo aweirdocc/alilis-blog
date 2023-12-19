@@ -204,6 +204,10 @@ const handleCloseTag = () => {
   .posts-bar {
     width: 88%;
     margin: 2em auto;
+
+    .posts {
+      padding: 0; 
+    }
   }
 }
 </style>
