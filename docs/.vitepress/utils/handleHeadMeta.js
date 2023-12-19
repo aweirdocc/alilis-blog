@@ -14,11 +14,13 @@ const handleHeadMeta = (context) => {
   const ogUrl = ["meta", { property: "og:url", content: createOgUrl(relativePath.slice(0, -3)) + '.html' }];
   const ogTitle = ["meta", { property: "og:title", content: title }];
   const ogDescription = ["meta", { property: "og:description", content: description || context.description }];
+  const baidu = ["meta", { name: 'baidu-site-verification', content: 'codeva-rziIWBHdDE'}];
 
   return [
     ogUrl,
     ogTitle,
-    ogDescription
+    ogDescription,
+    baidu
   ];
 }
 

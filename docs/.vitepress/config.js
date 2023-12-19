@@ -72,6 +72,10 @@ export default defineConfig({
     ],
   },
 
+  sitemap: {
+    hostname: 'https://blog.alilis.space'
+  },
+
   vite: {
     plugins: [
       ElementPlus(),
