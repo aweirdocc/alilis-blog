@@ -37,7 +37,7 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: { src: '/favicon.png', width: 24, height: 24 },
+    logo: { src: 'https://img.alilis.space/favicon-32x32.png', width: 24, height: 24 },
     outline: [2, 5],  // 识别<h2>-<h4>的标题
     outlineTitle: '本页目录',
     lastUpdatedText: '上次更新',
