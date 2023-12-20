@@ -10,7 +10,7 @@ function initNavData() {
 }
 
 export default defineConfig({
-  title: "ALilis",
+  title: "Alilis",
   description: "This is alilis's personal blog site with something talks.",
   lang: 'zh-CH',
 
@@ -27,7 +27,8 @@ export default defineConfig({
           "width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no",
       },
     ],
-    ["meta", { name: "keywords", content: "Alilis的个人博客站" }],
+    ["meta", { name: "keywords", content: "Alilis博客站" }],
+    ["meta", { name: "author", content: "alilis" }],
 
     // 引入 Gitalk
     [

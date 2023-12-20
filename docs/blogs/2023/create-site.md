@@ -1,7 +1,7 @@
 ---
 title: 2023
-titleTemplate: 手把手带你从零搭建博客站 
-description: 手把手带你从零搭建博客站, 会以 vitepress 为模板，在 vercel 上建站。
+titleTemplate: 手把手从零搭建博客站 
+description: Alilis带你手把手带你从零搭建博客站, 会以 vitepress 为模板，在 vercel 上建站。
 createDate: 2023-12-11
 tag: '教程'
 ---

@@ -1,7 +1,7 @@
 ---
 title: 2023
 titleTemplate: 搭建七牛云图床
-description: 搭建七牛云图床，并使用PicGo 快速上传 
+description: Alilis带你搭建七牛云图床，并使用PicGo 快速上传 
 createDate: 2023-12-18
 tag: 教程  
 ---

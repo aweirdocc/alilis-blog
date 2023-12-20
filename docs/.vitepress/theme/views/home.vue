@@ -28,7 +28,7 @@
           <ul>
             <li v-for="(post, index) in posts" class="posts" @click.stop="goto(`${post.url}`)">
               <p class="post-title">
-                {{ `${post.titleTemplate}` }}
+                <span class="post-title-name ell">{{ `${post.titleTemplate}` }}</span>
                 <span class="tags" @click.stop="handleTag(post.tag)">[ {{ post.tag }} ]</span>
               </p>
               <span class="dotted"></span>
@@ -155,6 +155,12 @@ const handleCloseTag = () => {
     padding: 4px 18px;
     border-radius: 4px;
 
+    .post-title {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+
     .dotted {
       flex: 1;
       margin: 0 16px;
@@ -207,6 +213,10 @@ const handleCloseTag = () => {
 
     .posts {
       padding: 0; 
+    }
+
+    .post-title-name {
+      max-width: 80%;
     }
   }
 }
