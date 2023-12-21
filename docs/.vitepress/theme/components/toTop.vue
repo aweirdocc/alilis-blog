@@ -39,6 +39,7 @@ const back2Home = () => {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  margin-bottom: 100px;
 
   span+span {
     margin-top: 10px;
