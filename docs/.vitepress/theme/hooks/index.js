@@ -1,4 +1,5 @@
-import { } from '@weebat/utils'
+import { useData } from 'vitepress';
+import { ref, watch } from 'vue';
 
 const toTimestamp = (date) => +new Date(date);
 
@@ -36,4 +37,25 @@ export const usePostList = (posts = [], tag = '', sort = 1) => {
   });
 
   return postMap
+}
+
+export const useColor = (lightColor= '#000', darkColor= '#fff') => {
+  const { isDark } = useData();
+  const color = ref('');
+
+  watch(
+    () => isDark.value,
+    (val) => {
+      if (isDark.value) {
+        color.value = darkColor;
+      } else {
+        color.value = lightColor;
+      }
+    },
+    {
+      immediate: true
+    }
+  )
+
+  return color;
 }

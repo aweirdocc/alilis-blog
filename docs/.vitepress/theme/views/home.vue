@@ -26,7 +26,7 @@
           </div>
 
           <ul>
-            <li v-for="(post, index) in posts" class="posts" @click.stop="goto(`${post.url}`)">
+            <li v-for="(post) in posts" class="posts" @click.stop="goto(`${post.url}`)">
               <p class="post-title">
                 <span class="post-title-name ell">{{ `${post.titleTemplate}` }}</span>
                 <span class="tags" @click.stop="handleTag(post.tag)">[ {{ post.tag }} ]</span>
@@ -38,41 +38,24 @@
         </template>
       </div>
     </section>
-
-    <!-- <section class="bg"></section> -->
   </div>
 </template>
 
 <script setup>
 import { ElTag } from 'element-plus'
 import { ref, watch, computed } from 'vue'
-import { useRouter, useData } from 'vitepress'
+import { useRouter } from 'vitepress'
 import { data as posts } from './posts.data.js'
-import { usePostList } from '../hooks/index'
+import { usePostList, useColor } from '../hooks/index'
 import rankIcon from './rankIcon.vue'
-import { setObjToUrlParams, getUrlParams } from '@weebat/utils'
+import { setObjToUrlParams, getUrlParams } from '@weebat/utils';
 
 const router = useRouter();
 const sidebar = ref(usePostList(posts));
 
-const { isDark } = useData();
 const iconType = ref('down');
-const iconColor = ref('#fff');
+const iconColor = useColor();
 const tag = ref('');
-
-watch(
-  () => isDark.value,
-  (val) => {
-    if (val) {
-      iconColor.value = '#fff';
-    } else {
-      iconColor.value = '#000';
-    }
-  },
-  {
-    immediate: true
-  }
-)
 
 const queryParams = computed(() => {
   return `${window.location.href}`
