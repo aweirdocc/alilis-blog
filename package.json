@@ -13,6 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@giscus/vue": "^2.3.0",
+    "figlet": "^1.7.0",
     "sass": "^1.69.5",
     "unplugin-element-plus": "^0.8.0",
     "vitepress": "^1.0.0-rc.25"
