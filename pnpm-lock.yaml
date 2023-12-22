@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@giscus/vue': ^2.3.0
-  '@weebat/utils': ^0.0.3
+  '@weebat/utils': ^0.0.4
   element-plus: ^2.4.3
   gray-matter: ^4.0.3
   medium-zoom: ^1.1.0
@@ -12,6 +12,7 @@ specifiers:
   vue: ^3.3.8
 
 dependencies:
+  '@weebat/utils': registry.npmmirror.com/@weebat/utils/0.0.4
   element-plus: registry.npmmirror.com/element-plus/2.4.3_vue@3.3.8
   gray-matter: registry.npmmirror.com/gray-matter/4.0.3
   medium-zoom: registry.npmmirror.com/medium-zoom/1.1.0
@@ -19,7 +20,6 @@ dependencies:
 
 devDependencies:
   '@giscus/vue': registry.npmmirror.com/@giscus/vue/2.3.0_vue@3.3.8
-  '@weebat/utils': registry.npmmirror.com/@weebat/utils/0.0.3
   sass: registry.npmmirror.com/sass/1.69.5
   unplugin-element-plus: registry.npmmirror.com/unplugin-element-plus/0.8.0
   vitepress: registry.npmmirror.com/vitepress/1.0.0-rc.25_sass@1.69.5
@@ -904,11 +904,11 @@ packages:
       - vue
     dev: false
 
-  registry.npmmirror.com/@weebat/utils/0.0.3:
-    resolution: {integrity: sha512-UqBkY0cz3JAlUppyx1Xhk+UiwozDnT8STE8YNA7+hP+GuPTsDoolUFRci2C8Mk/Ohm5rbQpawN3tgyse5PGZnw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@weebat/utils/-/utils-0.0.3.tgz}
+  registry.npmmirror.com/@weebat/utils/0.0.4:
+    resolution: {integrity: sha512-kcYvdTe0CEcbanqNMcJUwyATlYY7pHkQwsQkH/bQFmk9ff/fHLlptC/57g/t5VpvCyJXpKxnBAMld3Yjwc2bcg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@weebat/utils/-/utils-0.0.4.tgz}
     name: '@weebat/utils'
-    version: 0.0.3
-    dev: true
+    version: 0.0.4
+    dev: false
 
   registry.npmmirror.com/acorn/8.11.2:
     resolution: {integrity: sha512-nc0Axzp/0FILLEVsm4fNwLCwMttvhEI263QtVPQcbpfZZ3ts0hLsZGOpE6czNlid7CJ9MlyH8reXkpsf3YUY4w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/acorn/-/acorn-8.11.2.tgz}

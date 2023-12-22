@@ -13,12 +13,12 @@
   "license": "MIT",
   "devDependencies": {
     "@giscus/vue": "^2.3.0",
-    "@weebat/utils": "^0.0.3",
     "sass": "^1.69.5",
     "unplugin-element-plus": "^0.8.0",
     "vitepress": "^1.0.0-rc.25"
   },
   "dependencies": {
+    "@weebat/utils": "^0.0.4",
     "element-plus": "^2.4.3",
     "gray-matter": "^4.0.3",
     "medium-zoom": "^1.1.0",
