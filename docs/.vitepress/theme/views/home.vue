@@ -46,7 +46,7 @@ import { ElTag } from 'element-plus'
 import { ref, watch, computed } from 'vue'
 import { useRouter } from 'vitepress'
 import { data as posts } from './posts.data.js'
-import { usePostList, useColor } from '../hooks/index'
+import { usePostList, useColor } from '@blog/hooks'
 import rankIcon from './rankIcon.vue'
 import { setObjToUrlParams, getUrlParams } from '@weebat/utils';
 

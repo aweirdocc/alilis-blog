@@ -15,22 +15,22 @@
     </p>
 
     <p class="row between">
-    <div>
-      <label>水平布局：</label>
-      <el-select v-model="horizontalLayout">
-        <el-option v-for="(item) in layoutOption" :key="item.value" :label="item.label" :value="item.value">
-          {{ item.label }}
-        </el-option>
-      </el-select>
-    </div>
-    <div>
-      <label>垂直布局：</label>
-      <el-select v-model="verticalLayout">
-        <el-option v-for="(item) in layoutOption" :key="item.value" :label="item.label" :value="item.value">
-          {{ item.label }}
-        </el-option>
-      </el-select>
-    </div>
+      <div>
+        <label>水平布局：</label>
+        <el-select v-model="horizontalLayout">
+          <el-option v-for="(item) in layoutOption" :key="item.value" :label="item.label" :value="item.value">
+            {{ item.label }}
+          </el-option>
+        </el-select>
+      </div>
+      <!-- <div>
+        <label>垂直布局：</label>
+        <el-select v-model="verticalLayout">
+          <el-option v-for="(item) in layoutOption" :key="item.value" :label="item.label" :value="item.value">
+            {{ item.label }}
+          </el-option>
+        </el-select>
+      </div> -->
     </p>
 
     <pre class="ascii">{{ data }} <i class="clipboard-icon" title="一键复制"></i></pre>
@@ -39,8 +39,8 @@
 
 <script setup>
 import { ElSelect, ElOption, ElInput } from 'element-plus';
-import { computed, ref, unref } from 'vue';
-import { useColor, useFlglet } from '../../hooks/index';
+import { ref } from 'vue';
+import { useColor, useFlglet } from '@blog/hooks';
 
 const inputValue = ref("Alilis");
 const selectedFont = ref('Standard');

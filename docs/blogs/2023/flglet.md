@@ -19,11 +19,11 @@ tag: 工具
 
 ----
 
-<flglet />
+<figlet />
 
 [flgletJS官方仓库](https://github.com/patorjk/figlet.js#readme)有具体的使用方法，注意游览器端与Node服务端有使用区别，你也可以点击[这里](http://www.figlet.org/examples.html)查看不同字体的示例。
 
 
 <script  setup>
-  import Flglet from '../../.vitepress/theme/views/tools/flglet.vue'
+  import Figlet from '@blog/figlet';
 </script>

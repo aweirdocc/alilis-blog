@@ -1,30 +1,38 @@
 lockfileVersion: 5.4
 
-specifiers:
-  '@giscus/vue': ^2.3.0
-  '@weebat/utils': ^0.0.4
-  element-plus: ^2.4.3
-  figlet: ^1.7.0
-  gray-matter: ^4.0.3
-  medium-zoom: ^1.1.0
-  sass: ^1.69.5
-  unplugin-element-plus: ^0.8.0
-  vitepress: ^1.0.0-rc.25
-  vue: ^3.3.8
+importers:
 
-dependencies:
-  '@weebat/utils': registry.npmmirror.com/@weebat/utils/0.0.4
-  element-plus: registry.npmmirror.com/element-plus/2.4.3_vue@3.3.8
-  gray-matter: registry.npmmirror.com/gray-matter/4.0.3
-  medium-zoom: registry.npmmirror.com/medium-zoom/1.1.0
-  vue: registry.npmmirror.com/vue/3.3.8
+  .:
+    specifiers:
+      '@blog/figlet': workspace:^1.0.0
+      '@blog/hooks': workspace:^1.0.0
+      '@giscus/vue': ^2.3.0
+      '@weebat/utils': ^0.0.4
+      element-plus: ^2.4.3
+      figlet: ^1.7.0
+      gray-matter: ^4.0.3
+      medium-zoom: ^1.1.0
+      sass: ^1.69.5
+      unplugin-element-plus: ^0.8.0
+      vitepress: ^1.0.0-rc.25
+      vue: ^3.3.8
+    dependencies:
+      '@blog/figlet': link:packages/figlet
+      '@weebat/utils': registry.npmmirror.com/@weebat/utils/0.0.4
+      element-plus: registry.npmmirror.com/element-plus/2.4.3_vue@3.3.8
+      gray-matter: registry.npmmirror.com/gray-matter/4.0.3
+      medium-zoom: registry.npmmirror.com/medium-zoom/1.1.0
+      vue: registry.npmmirror.com/vue/3.3.8
+    devDependencies:
+      '@blog/hooks': link:packages/hooks
+      '@giscus/vue': registry.npmmirror.com/@giscus/vue/2.3.0_vue@3.3.8
+      figlet: registry.npmmirror.com/figlet/1.7.0
+      sass: registry.npmmirror.com/sass/1.69.5
+      unplugin-element-plus: registry.npmmirror.com/unplugin-element-plus/0.8.0
+      vitepress: registry.npmmirror.com/vitepress/1.0.0-rc.25_sass@1.69.5
 
-devDependencies:
-  '@giscus/vue': registry.npmmirror.com/@giscus/vue/2.3.0_vue@3.3.8
-  figlet: registry.npmmirror.com/figlet/1.7.0
-  sass: registry.npmmirror.com/sass/1.69.5
-  unplugin-element-plus: registry.npmmirror.com/unplugin-element-plus/0.8.0
-  vitepress: registry.npmmirror.com/vitepress/1.0.0-rc.25_sass@1.69.5
+  packages/a:
+    specifiers: {}
 
 packages:
 

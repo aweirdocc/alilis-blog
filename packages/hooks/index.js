@@ -117,3 +117,9 @@ export const useFlglet = (inputRef, optionsRef) => {
     generate
   }
 }
+
+export default {
+  usePostList,
+  useColor,
+  useFlglet
+}
