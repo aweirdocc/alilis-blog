@@ -11,14 +11,14 @@ function initNavData() {
 
 export default defineConfig({
   title: "Alilis",
-  description: "This is alilis's personal blog site with something talks.",
+  description: "这里是Alilis的博客站，会分享日常的一些教程与随记，感谢你的访问与评论。如有问题请联系我。",
   lang: 'zh-CH',
 
   lastUpdated: true,
   cleanUrls: false,
 
   head: [
-    ["link", { rel: "icon", type: 'image/png', href: "https://img.alilis.space/favicon-32x32.png" }],
+    ["link", { rel: "icon", type: 'image/png', href: "/favicon.png" }],
     [
       "meta",
       {
@@ -27,8 +27,8 @@ export default defineConfig({
           "width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no",
       },
     ],
-    ["meta", { name: "keywords", content: "Alilis博客站" }],
-    ["meta", { name: "author", content: "alilis" }],
+    ["meta", { name: "keywords", content: "Alilis,博客站,前端,工具,教程" }],
+    ["meta", { name: "author", content: "Alilis" }],
 
     // 引入 Gitalk
     [
@@ -48,7 +48,7 @@ export default defineConfig({
     outline: [2, 5],  // 识别<h2>-<h4>的标题
     outlineTitle: '本页目录',
     lastUpdatedText: '上次更新',
-    author: "alilis",
+    author: "Alilis",
 
     search: {
       provider: "local",

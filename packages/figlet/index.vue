@@ -4,7 +4,7 @@
       <label>输入：</label><el-input v-model="inputValue" @input="generate" clearable></el-input>
     </p>
 
-    <p class="row">
+    <div class="row">
       <label>字体：</label>
       <el-select v-model="selectedFont" @change="loadFont">
         <el-option v-for="(item) in fontsOption" placeholder="选择一个字体" :key="item.value" :label="item.label"
@@ -12,9 +12,13 @@
           {{ item.label }}
         </el-option>
       </el-select>
+    </div>
+
+    <p class="row">
+      <label>限制宽度：</label><el-input-number v-model="fontWidth" :min="10" :max="100"></el-input-number>
     </p>
 
-    <p class="row between">
+    <div class="row between">
       <div>
         <label>水平布局：</label>
         <el-select v-model="horizontalLayout">
@@ -23,34 +27,41 @@
           </el-option>
         </el-select>
       </div>
-      <!-- <div>
+      <div>
         <label>垂直布局：</label>
         <el-select v-model="verticalLayout">
           <el-option v-for="(item) in layoutOption" :key="item.value" :label="item.label" :value="item.value">
             {{ item.label }}
           </el-option>
         </el-select>
-      </div> -->
-    </p>
+      </div>
+    </div>
 
-    <pre class="ascii">{{ data }} <i class="clipboard-icon" title="一键复制"></i></pre>
+    <div class="language- dataset">
+      <pre class="ascii" ref="asciiRef">{{ data }}</pre>
+      <button class="copy" ref="copyBtnRef" title="一键复制" @click="handleCopy"></button>
+    </div>
   </section>
 </template>
 
 <script setup>
-import { ElSelect, ElOption, ElInput } from 'element-plus';
+import { ElSelect, ElOption, ElInput, ElInputNumber } from 'element-plus';
 import { ref } from 'vue';
-import { useColor, useFlglet } from '@blog/hooks';
+import { useColor, useFlglet, useCopy } from '@blog/hooks';
 
 const inputValue = ref("Alilis");
 const selectedFont = ref('Standard');
+const fontWidth = ref(80);
 const horizontalLayout = ref('default');
 const verticalLayout = ref('default');
 const preBorderColor = useColor('#c5c5c5');
 const optionRef = ref({
   horizontalLayout,
-  verticalLayout
+  verticalLayout,
+  fontWidth
 })
+const asciiRef = ref(null);
+const copyBtnRef = ref(null);
 
 const { data, fonts, loadFont, generate, } = useFlglet(inputValue, optionRef);
 
@@ -68,7 +79,9 @@ const layoutOption = ['default', "full", "fitted", "controlled smushing", "unive
   }
 });
 
-
+const handleCopy = () => {
+  useCopy(asciiRef, copyBtnRef);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -82,27 +95,20 @@ const layoutOption = ['default', "full", "fitted", "controlled smushing", "unive
   label {
     min-width: 80px;
   }
+
+  &>.el-input-number {
+    width: 100%;
+  }
 }
 
-.ascii {
+.dataset {
   position: relative;
-  text-align: center;
-  margin-top: 20px;
-  border: 1px solid v-bind(preBorderColor);
-  border-radius: 15px;
 
-  .clipboard-icon {
-    width: 20px;
-    height: 20px;
-    display: inline-block;
-    background-image: url('/svg/clippy.svg');
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    cursor: pointer;
+  .ascii {
+    text-align: center;
+    border: 1px solid v-bind(preBorderColor);
+    border-radius: 15px;
+    overflow: auto;
   }
 }
 </style>
