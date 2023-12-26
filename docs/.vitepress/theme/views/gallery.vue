@@ -25,7 +25,8 @@
 import { ref, reactive, watch } from 'vue';
 import { ImageViewer as TImageViewer } from 'tdesign-vue-next';
 import { IGalleryItem } from './types'
-
+// 引入组件库的少量全局样式变量
+import 'tdesign-vue-next/es/style/index.css';
 
 const props = defineProps<{
   galleryGroups: IGalleryItem[]
