@@ -19,7 +19,8 @@ sidebar: false
       bannerImg: 'https://img.alilis.space/IMG_20231019_175823.jpg-alilis_img',
       imgUrlList: [
         'https://img.alilis.space/IMG_20231019_175823.jpg-alilis_img',
-        'https://img.alilis.space/IMG_20231119_160552.jpg-alilis_img'
+        'https://img.alilis.space/IMG_20231119_160552.jpg-alilis_img',
+        'https://img.alilis.space/lADPJxf-4P8W5X3NBQDNA8A_960_1280.jpg_720x720q90g.jpg-alilis_img'
       ],
       createDate: '2023-12-25'
     }
