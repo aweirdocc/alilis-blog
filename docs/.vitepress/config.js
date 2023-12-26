@@ -5,7 +5,7 @@ import handleHeadMeta from './utils/handleHeadMeta';
 function initNavData() {
   return [
     { text: "首页", link: "index" },
-    // { text: "博文", link: `${firstBlog.base}${firstBlog.items[0].link}`, activeMatch: '^/blogs/' },
+    { text: "图库", link: "gallery" },
   ]
 }
 

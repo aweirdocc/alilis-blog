@@ -83,7 +83,7 @@ export const useFlglet = (inputRef, optionsRef) => {
   }
 
   function generate() {
-    const {horizontalLayout, verticalLayout, fontWidth} = unref(optionsRef);
+    const { horizontalLayout, verticalLayout, fontWidth } = unref(optionsRef);
 
     data.value = figlet.textSync(inputRef.value, {
       font: selectedFont.value,
@@ -118,54 +118,56 @@ export const useFlglet = (inputRef, optionsRef) => {
   }
 }
 
-async function copyToClipboard(text) {
+export async function copyToClipboard(text) {
   try {
-      return navigator.clipboard.writeText(text);
+    return navigator.clipboard.writeText(text);
   }
   catch {
-      const element = document.createElement('textarea');
-      const previouslyFocusedElement = document.activeElement;
-      element.value = text;
-      // Prevent keyboard from showing on mobile
-      element.setAttribute('readonly', '');
-      element.style.contain = 'strict';
-      element.style.position = 'absolute';
-      element.style.left = '-9999px';
-      element.style.fontSize = '12pt'; // Prevent zooming on iOS
-      const selection = document.getSelection();
-      const originalRange = selection
-          ? selection.rangeCount > 0 && selection.getRangeAt(0)
-          : null;
-      document.body.appendChild(element);
-      element.select();
-      // Explicit selection workaround for iOS
-      element.selectionStart = 0;
-      element.selectionEnd = text.length;
-      document.execCommand('copy');
-      document.body.removeChild(element);
-      if (originalRange) {
-          selection.removeAllRanges(); // originalRange can't be truthy when selection is falsy
-          selection.addRange(originalRange);
-      }
-      // Get the focus back on the previously focused element, if any
-      if (previouslyFocusedElement) {
-          previouslyFocusedElement.focus();
-      }
+    const element = document.createElement('textarea');
+    const previouslyFocusedElement = document.activeElement;
+    element.value = text;
+    // Prevent keyboard from showing on mobile
+    element.setAttribute('readonly', '');
+    element.style.contain = 'strict';
+    element.style.position = 'absolute';
+    element.style.left = '-9999px';
+    element.style.fontSize = '12pt'; // Prevent zooming on iOS
+    const selection = document.getSelection();
+    const originalRange = selection
+      ? selection.rangeCount > 0 && selection.getRangeAt(0)
+      : null;
+    document.body.appendChild(element);
+    element.select();
+    // Explicit selection workaround for iOS
+    element.selectionStart = 0;
+    element.selectionEnd = text.length;
+    document.execCommand('copy');
+    document.body.removeChild(element);
+    if (originalRange) {
+      selection.removeAllRanges(); // originalRange can't be truthy when selection is falsy
+      selection.addRange(originalRange);
+    }
+    // Get the focus back on the previously focused element, if any
+    if (previouslyFocusedElement) {
+      previouslyFocusedElement.focus();
+    }
   }
 }
 
 export const useCopy = (textRef, btnRef) => {
-  const textEle = textRef.value;
-  const btnEle = btnRef.value;
+  const textEle = textRef?.value;
+  const btnEle = btnRef?.value;
 
-  if (textEle.innerText.length) {
+  if (textEle?.innerText.length) {
     copyToClipboard(textEle.innerText).then(res => {
-      btnEle.classList.add('copied');  
+      if (btnEle) {
+        btnEle.classList.add('copied');
 
-      setTimeout(() => {
-        btnEle.classList.remove('copied');
-        btnEle.blur();
-      }, 2000)
+        setTimeout(() => {
+          btnEle.classList.remove('copied');
+          btnEle.blur();
+        }, 2000)
+      }
     })
   }
 }

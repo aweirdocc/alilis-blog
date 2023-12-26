@@ -18,7 +18,7 @@ tag: 教程
 
 具体如何创建对象存储参考[这里](https://developer.qiniu.com/kodo/1233/console-quickstart)。创建成功后，可以在文件管理中上传资源。
 
-<zoom-img src="https://img.alilis.space/image-20231218152015925.png" />
+<zoom-img src="https://img.alilis.space/image-20231218152015925.png-alilis_img" />
 
 七牛云创建的`Bucket` 默认是需要绑定一个自定义域名，才支持外部的链接访问。
 
@@ -36,7 +36,7 @@ tag: 教程
 
 PicGo 默认是支持七牛云上传的，所以在图床设置里可以找到`七牛云`选项。
 
-<zoom-img src="https://img.alilis.space/image-20231218165651489.png" />
+<zoom-img src="https://img.alilis.space/image-20231218165651489.png-alilis_img" />
 
 - `AccessKey`和`SecretKey`：可以在七牛云控制台，秘钥管理页面新增一个配置，AK对应`AccessKey`， SK对应`SecretKey`。
 - `Bucket`： 创建的对象空间的名称。
@@ -53,6 +53,6 @@ PicGo 默认是支持七牛云上传的，所以在图床设置里可以找到`�
 
 在工具栏`文件/偏好设置`里，我们找到图像设置，参考下图：
 
-<zoom-img src="https://img.alilis.space/image-20231218165120312.png" />
+<zoom-img src="https://img.alilis.space/image-20231218165120312.png-alilis_img" />
 
 完成配置后可以点击`验证图片上传选项`试试是否上传成功。如果失败，请确认你的配置是否正确。

@@ -15,7 +15,7 @@
     </div>
 
     <p class="row">
-      <label>限制宽度：</label><el-input-number v-model="fontWidth" :min="10" :max="100"></el-input-number>
+      <label>限制宽度：</label><el-input-number v-model="fontWidth" :min="10"></el-input-number>
     </p>
 
     <div class="row between">
