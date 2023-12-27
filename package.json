@@ -19,9 +19,11 @@
   "devDependencies": {
     "@blog/hooks": "workspace:^1.0.0",
     "@giscus/vue": "^2.3.0",
+    "fast-glob": "^3.3.2",
     "figlet": "^1.7.0",
     "sass": "^1.69.5",
     "unplugin-element-plus": "^0.8.0",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vitepress": "^1.0.0-rc.25"
   },
   "dependencies": {

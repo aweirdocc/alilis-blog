@@ -1,6 +1,8 @@
 import { defineConfig } from 'vitepress';
 import ElementPlus from 'unplugin-element-plus/vite';
 import handleHeadMeta from './utils/handleHeadMeta';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import path from 'path';
 
 function initNavData() {
   return [
@@ -39,9 +41,9 @@ export default defineConfig({
   ],
 
   // https://vitepress.dev/reference/site-config#transformhead
-	async transformHead(context) {
-		return handleHeadMeta(context);
-	},
+  async transformHead(context) {
+    return handleHeadMeta(context);
+  },
 
   themeConfig: {
     logo: { src: '/favicon.png', width: 24, height: 24 },
@@ -80,6 +82,13 @@ export default defineConfig({
   vite: {
     plugins: [
       ElementPlus(),
+
+      // 注册所有的svg文件生成svg雪碧图
+      createSvgIconsPlugin({
+        iconDirs:  [path.resolve(process.cwd(), 'docs/public/svg')], // icon存放的目录
+        symbolId: "icon-[name]", // symbol的id
+        inject: "body-last", // 插入的位置
+      })
     ],
     // https://github.com/antfu/vite-ssg/issues/171
     ssr: {

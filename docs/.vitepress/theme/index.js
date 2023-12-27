@@ -4,6 +4,9 @@ import './index.scss';
 import ZoomImg from './components/zoomImg.vue'
 import Comment from './components/comment.vue'
 import ToTop from './components/toTop.vue'
+import Icon from './components/icon.vue'
+
+import 'virtual:svg-icons-register';
 
 export default {
   ...DefaultTheme,
@@ -17,5 +20,6 @@ export default {
   enhanceApp({ app }) {
     app.component('ZoomImg', ZoomImg)
     app.component('Comment', Comment)
+    app.component('SvgIcon', Icon)
   }
 }

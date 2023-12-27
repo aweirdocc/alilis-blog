@@ -20,7 +20,7 @@
 
             <p>
               <i class="rank-icon" v-if="index === 0" @click="rankChanged">
-                <rank-icon :icon-type="iconType" />
+                <svg-icon :name="iconType"></svg-icon>
               </i>
             </p>
           </div>
@@ -47,7 +47,6 @@ import { ref, watch, computed } from 'vue'
 import { useRouter } from 'vitepress'
 import { data as posts } from './posts.data.js'
 import { usePostList, useColor } from '@blog/hooks'
-import rankIcon from './rankIcon.vue'
 import { setObjToUrlParams, getUrlParams } from '@weebat/utils';
 
 const router = useRouter();

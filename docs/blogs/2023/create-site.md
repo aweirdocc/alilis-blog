@@ -202,3 +202,189 @@ export default defineConfig({
 
 最后， 十分感谢[VitePress]('https://vitepress.dev/')以及[Vercel]('https://vercel.com/')给我们提供的技术支持。
 
+
+
+## 个性化功能
+
+### 获取文章列表
+
+VitePress 给我们提供了`createContentLoader` API 来获取目录下的 markdown 文件数据，注意，其它类型的文件会被跳过。
+
+```js
+// posts.data.js
+import { createContentLoader } from 'vitepress'
+
+export default createContentLoader('posts/*.md', /* options */);
+```
+
+默认情况下，仅提供 `url `和 `frontmatter`数据。可以通过配置 options 来放开`src`、`html`和`excerpt`的数据。在组件中引入来获取数据。
+
+```vue
+<script setup>
+import { data as posts } from './posts.data.js'
+</script>
+
+<template>
+  <h1>All Blog Posts</h1>
+  <ul>
+    <li v-for="post of posts">
+      <a :href="post.url">{{ post.frontmatter.title }}</a>
+      <span>by {{ post.frontmatter.author }}</span>
+    </li>
+  </ul>
+</template>
+```
+
+
+
+### 插槽模块
+
+日常使用中， 我们可能需要默认主题中新增部分个性化组件，官方默认提供了一些插槽供我们使用。
+
+调整主题配置文件中（`docs/.vitepress/theme/index.js`）：
+
+```js
+import { h } from 'vue';
+import DefaultTheme from 'vitepress/theme';
+
+export default {
+  ...DefaultTheme,
+  Layout: () => {
+    return h(DefaultTheme.Layout, null, {
+      // ...
+      "doc-after": () => h(Comment), // 文章新增评论组件
+    })
+  },
+  enhanceApp({ app }) {
+    // 注册全局组件
+  }
+}
+```
+
+常用的`doc`布局有一下插槽：
+
+- `doc-top`
+- `doc-bottom`
+- `doc-footer-before`
+- `doc-before`
+- `doc-after`
+- `sidebar-nav-before`
+- `sidebar-nav-after`
+- `aside-top`
+- `aside-bottom`
+- `aside-outline-before`
+- `aside-outline-after`
+- `aside-ads-before`
+- `aside-ads-after`
+
+插槽具体的细节查看[这里](https://vitepress.dev/guide/extending-default-theme#layout-slots)。
+
+
+
+### 使用 SVG 图标
+
+安装`vite-plugin-svg-icons`：
+
+```bash
+pnpm add vite-plugin-svg-icons -D
+```
+
+修改配置：
+
+```js
+// config.js
+import { defineConfig } from 'vitepress';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import path from 'path';
+
+export default defineConfig({
+    vite: {
+        plugins: [
+          // 注册所有的 svg 文件生成 svg 雪碧图
+          createSvgIconsPlugin({
+            iconDirs:  [path.resolve(process.cwd(), 'docs/public/svg')], // icon 存放的目录
+            symbolId: "icon-[name]", // symbol的id
+            inject: "body-last", // 插入的位置
+          })
+        ],
+    },   
+});
+```
+
+新增SvgIcon组件:
+
+```vue
+<template>
+  <svg :class="['svg-icon', svgClass]" :width="`${size}`" :height="`${size}`"  aria-hidden="true">
+      <use :xlink:href="`${iconName}`" />
+  </svg>
+</template>
+
+<script setup name="SvgIcon">
+import { computed } from 'vue'
+
+const props = defineProps({
+  svgClass: {
+    type: String,
+    default: ''
+  },
+  name: {
+    type: String,
+    required: true
+  },
+  size: {
+    type: Number,
+    default: 25
+  }
+});
+
+const iconName = computed(() => `#icon-${props.name}`)
+</script>
+
+<style lang="scss" scoped>
+.svg-icon {
+  fill: currentColor;
+}
+</style>
+```
+
+我们将它在全局中注册以后，就可以在组件中这样使用：
+
+```vue
+<svg-icon :name="iconName"></svg-icon>
+```
+
+
+
+### 关于SEO的处理
+
+关于SEO的优化对于博主来讲，也是一个痛点，目前也还在摸索与优化中。在这里先记录一下我的一些尝试， 如果有更好的解决办法，欢迎评论。
+
+1. 新增`og`类元数据
+
+   og 是一种新的HTTP头部标记，即Open Graph Protocol。
+
+   ```
+   <meta property=”og:title” content=”” />
+   
+   <meta property=”og:type” content=””/>
+   
+   <meta property=”og:url” content=”http://www.******.com” />
+   
+   <meta property=”og:image” content=”http://www.******.com/logo.gif” />
+   
+   <meta property=”og:site_name” content=”******.COM” />
+   
+   <meta property=”og:description” content=”” />
+   
+   <meta property=”fb:admins” content=”″ />
+   
+   <meta property=”fb:page_id” content=”″ />
+   ```
+
+   主要添加页面的标题、简介等
+
+2. 编入搜索引擎的索引
+
+   这一部分就看个人需求了，可以在[这里](https://search.google.com/search-console)去新增谷歌索引。
+
