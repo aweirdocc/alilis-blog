@@ -138,15 +138,6 @@ const mesh = new Mesh(geometry, material);
 
 创建一个 `three.js` 应用程序都需要所有这六个步骤：
 
-1. **[初始设置](https://blog.alilis.space/blogs/2024/three-js.html/#初始设置)**
-2. **[创建场景](https://blog.alilis.space/blogs/2024/three-js.html/#创建场景)**
-3. **[创建相机](https://blog.alilis.space/blogs/2024/three-js.html/#创建相机)**
-4. **[创建可见对象](https://blog.alilis.space/blogs/2024/three-js.html/#创建可见对象)**
-5. **[创建渲染器](https://blog.alilis.space/blogs/2024/three-js.html/#创建渲染器)**
-6. **[渲染场景](https://blog.alilis.space/blogs/2024/three-js.html/#渲染场景)**
-
-
-
 ### 初始设置
 
 导入组件所需的类：
