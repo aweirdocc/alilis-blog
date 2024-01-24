@@ -1,7 +1,7 @@
 ---
 title: 2024
-titleTemplate: Blob文件流
-description: 日常开发中，网页的文件传输大多都是以Blob 文件流的方式进行前后端的交互。本篇文章会总结一下流的使用技巧。
+titleTemplate: 你了解文件流吗
+description: 日常开发中，网页的文件传输大多都是以Blob文件流的方式进行前后端的交互。本篇文章会总结一下流的使用技巧。
 createDate: 2024-01-16
 tag: 前端  
 ---
@@ -37,7 +37,7 @@ const blob1 = new Blob([JSON.stringify(data)]); // size: 13
 const blob2 = new Blob([data]);	// size: 15
 ```
 
-`blob2`保存的数据其实是**"[object Object]"**，它是15个字节。
+`blob2`保存的数据其实是"**[object Object]**"，它是15个字节。
 
 
 
@@ -117,7 +117,7 @@ link.href = URL.createObjectURL(blob);	// 生成地址
 link.click();
 ```
 
-图片资源也是同理，只需替换对应的类型即可，最后生成的地址可以在便签栏中打开。
+图片资源也是同理，只需替换对应的类型即可，最后生成的地址可以在游览器标签栏中打开。
 
 
 
@@ -167,6 +167,42 @@ var file = new File(array, name, options);
 
 
 
+## Base64
+
+Base64 是一种基于64个可打印字符来表示二进制数据的表示方法。Base64是一种最常见的二进制编码方法，将二进制数据使用 ASCII 字符串格式表示。
+
+<zoom-img src="https://img.alilis.space/image-20240124165855197.png-alilis_img"></zoom-img>
+
+Base64主要解决系统以及传输协议之间二进制不兼容的问题，所以它比较适合在不同平台及语言之间的传输。
+
+在 JavaScript 中，有两个函数被分别用来处理解码和编码 *base64* 字符串：
+
+- [`atob()`](https://developer.mozilla.org/zh-CN/docs/Web/API/atob)：解码，解码一个 Base64 字符串；
+- [`btoa()`](https://developer.mozilla.org/zh-CN/docs/Web/API/btoa)：编码，从一个字符串或者二进制数据编码一个 Base64 字符串。
+
+```js
+btoa("JavaScript")       // 'SmF2YVNjcmlwdA=='
+atob('SmF2YVNjcmlwdA==') // 'JavaScript'
+```
+
+日常开发中，可以将使用`toDataURL()`方法把 canvas 画布内容生成 base64 编码格式的图片：
+
+```js
+const canvas = document.getElementById('canvas'); 
+const ctx = canvas.getContext("2d");
+const dataUrl = canvas.toDataURL();
+```
+
+或者可以将小图片文件转换成Base64格式进行上传或展示。
+
+:::tip
+
+如果你将一个字符串传递给 `btoa()`，而其中包含了需要使用超过一个字节才能表示的字符，你就会得到一个错误，因为这个字符串不能被看作是二进制数据。
+
+Base64不是加密算法，它仅仅是一种编码的方式，所以不能用来处理加密数据。
+
+:::
+
 
 
 
@@ -174,7 +210,9 @@ var file = new File(array, name, options);
 
 [`FileReader`](https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader)对象允许 `Web` 应用程序**异步读取存储**在用户计算机上的文件（或原始数据缓冲区）的内容，使用 `File` 或 `Blob` 对象指定要读取的文件或数据。
 
-它有三个只读树形：
+
+
+它有三个属性：
 
 - `FileReader.error`： 表示在读取文件时发生的错误；
 - `FileReader.readyState`：表示 `FileReader` 状态的数字。：
@@ -185,7 +223,7 @@ var file = new File(array, name, options);
 
 ----
 
-事件处理函数：
+### 事件处理函数
 
 - `FileReader.onabort`：处理 `abort` 事件。该事件在读取操作被中断时触发。
 - `FileReader.onerror`：处理 `error` 事件。该事件在读取操作发生错误时触发。
@@ -196,7 +234,7 @@ var file = new File(array, name, options);
 
 ---
 
-实例方法：
+### 实例方法
 
 - `FileReader.abort()`：中止读取操作。在返回时，`readyState` 属性为 `DONE`。
 - `FileReader.readAsArrayBuffer()`：开始读取指定的 `Blob` 中的内容。一旦完成，`result` 属性将包含一个`ArrayBuffer` 来表示文件数据；
@@ -206,10 +244,10 @@ var file = new File(array, name, options);
 
 ---
 
-示例：
+### 示例
 
 ```js
-onDrop(files) {
+onUpload(files) {
   files.forEach(file => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -232,6 +270,12 @@ onDrop(files) {
 }
 ```
 
+::: tip
+
+在操作文件时，必须在`onLoad`之后进行。
+
+::: 
+
 
 
 ## 文件类型转换
@@ -248,15 +292,48 @@ const toBlob = new Blob([file], {type: file.type})
 const files = new File([blob], fileName, {type: fileType})
 ```
 
-### Blob/File转换成Base64
+### Blob转换成Base64
 
  ```js
- function blob2DataURL(data, callback) {
+ function blob2Base64(data, callback) {
      const fileReader = new FileReader();
-     fileReader.onload = function (e) { callback(e.target.result); }
+     fileReader.onload = function (e) { callback(e.target.result); };
+     
      fileReader.readAsDataURL(data);
  }
  ```
+
+### Base64转换成Blob
+
+```js
+function base64ToBlob(base64Data, contentType) {
+  contentType = contentType || '';
+  const sliceSize = 512;
+  const byteCharacters = atob(base64Data);
+  const bytesLength = byteCharacters.length;
+  const slicesCount = Math.ceil(bytesLength / sliceSize);
+  const byteArrays = new Array(slicesCount);
+
+  for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
+    const begin = sliceIndex * sliceSize;
+    const end = Math.min(begin + sliceSize, bytesLength);
+    const bytes = new Array(end - begin);
+
+    for (let offset = begin, i = 0; offset < end; ++i, ++offset) {
+      bytes[i] = byteCharacters[offset].charCodeAt(0);
+    }
+    byteArrays[sliceIndex] = new Uint8Array(bytes);
+  }
+
+  return new Blob(byteArrays, { type: contentType });
+}
+```
+
+### Blob转成ObjectURL
+
+```js
+const objectUrl = URL.createObjectURL(blob);
+```
 
 
 
