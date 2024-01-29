@@ -115,9 +115,16 @@ const blob = new Blob([data], {
 link.download = 'filedata'; // 设置文件名
 link.href = URL.createObjectURL(blob);	// 生成地址
 link.click();
+window.URL.revokeObjectURL(link.href);	// 释放内存
 ```
 
 图片资源也是同理，只需替换对应的类型即可，最后生成的地址可以在游览器标签栏中打开。
+
+:::tip
+
+当调用`createObjectURL`方法时，都会创建一个新的URL对象，浏览器在 document 卸载的时候，会自动释放它们，但为了最佳性能和内存使用，当不再需要这些 URL 对象时，每个对象必须通过调用 [`URL.revokeObjectURL()`](https://developer.mozilla.org/zh-CN/docs/Web/API/URL/revokeObjectURL_static) 方法来释放。
+
+:::
 
 
 
