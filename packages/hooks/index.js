@@ -172,6 +172,15 @@ export const useCopy = (textRef, btnRef) => {
   }
 }
 
+export const file2Blob = (file) => new Blob([file], { type: file.type });
+
+export const blob2Base64 = (data, callback, error) => {
+  const fileReader = new FileReader();
+
+  fileReader.onload = function (e) { callback(e.target.result); };
+  fileReader.readAsDataURL(data);
+};
+
 export default {
   usePostList,
   useColor,

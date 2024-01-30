@@ -6,6 +6,8 @@ importers:
     specifiers:
       '@blog/figlet': workspace:^1.0.0
       '@blog/hooks': workspace:^1.0.0
+      '@blog/img2url': workspace:^1.0.0
+      '@element-plus/icons-vue': ^2.3.1
       '@giscus/vue': ^2.3.0
       '@weebat/utils': ^0.0.4
       element-plus: ^2.4.3
@@ -21,6 +23,8 @@ importers:
       vue: ^3.3.8
     dependencies:
       '@blog/figlet': link:packages/figlet
+      '@blog/img2url': link:packages/img2url
+      '@element-plus/icons-vue': registry.npmmirror.com/@element-plus/icons-vue/2.3.1_vue@3.3.8
       '@weebat/utils': registry.npmmirror.com/@weebat/utils/0.0.4
       element-plus: registry.npmmirror.com/element-plus/2.4.3_vue@3.3.8
       gray-matter: registry.npmmirror.com/gray-matter/4.0.3
