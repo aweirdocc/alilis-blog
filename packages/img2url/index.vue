@@ -1,6 +1,6 @@
 <template>
   <section class="img-to-url">
-    <el-upload class="uploader" action="#" :show-file-list="false" :on-success="handleAvatarSuccess"
+    <el-upload class="uploader" action="#" :http-request="handleUpload" :show-file-list="false"
       :before-upload="beforeAvatarUpload">
       <img v-if="imageUrl" :src="imageUrl" class="uploaded-img" />
 
@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { ElUpload, ElIcon, ElMessage, ElButton, ElLoading  } from 'element-plus';
+import { ElUpload, ElIcon, ElMessage, ElButton } from 'element-plus';
 import { Plus } from '@element-plus/icons-vue'
 import { ref } from 'vue';
 import { file2Blob, blob2Base64, useCopy, copyToClipboard } from '@blog/hooks'
@@ -33,6 +33,23 @@ const datasetRef = ref(null);
 
 const lodingInstance = ref(null);
 
+const handleUpload = (options) => {
+  if (options.file) {
+    const blob = file2Blob(options.file);
+
+    blob2Base64(blob, (val) => {
+      imageUrl.value = val;
+      imageUrlLink.value = `<img src="${val}" />`
+
+      setTimeout(() => {
+        ElMessage.success('转换成功');
+      }, 500);
+    });
+  }
+
+  return false;
+}
+
 // 格式校验
 const beforeAvatarUpload = (rawFile) => {
   if (!['image/jpg', 'image/png', 'image/webp', 'image/gif', 'image/svg+xml', 'image/jpeg'].includes(rawFile.type)) {
@@ -41,25 +58,7 @@ const beforeAvatarUpload = (rawFile) => {
     return false;
   }
 
-  lodingInstance.value = ElLoading.service({
-    target: datasetRef.value
-  })
-
   return true
-}
-
-
-const handleAvatarSuccess = (response, uploadFile) => {
-  const imgFile = uploadFile.raw;
-  const blob = file2Blob(imgFile);
-
-  blob2Base64(blob, (val) => {
-    imageUrl.value = val;
-    imageUrlLink.value = `<img src="${val}" />`
-
-    lodingInstance.value.close();
-    ElMessage.success('转换成功');
-  });
 }
 
 const handleCopy = (type) => {
