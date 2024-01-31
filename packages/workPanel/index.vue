@@ -5,7 +5,7 @@
 <script setup>
   import { ref, onMounted, watch, reactive } from 'vue';
   import { useColor } from '@blog/hooks';
-
+  
   import LfUtil from './js/lfUtil';
 
   const panelBgColor = useColor('#fff', '#000');
@@ -36,18 +36,20 @@
     lfUtil.value = new LfUtil(panelRef, config);
   });
 
-  watch(
-    config,
-    (val) => {
-    },
-    {
-      deep: true,
-    }
-  )
+  // TODO: 配置切换后更新
+  // watch(
+  //   config,
+  //   (val) => {
+  //   },
+  //   {
+  //     deep: true,
+  //   }
+  // )
 </script>
 
 <style lang="scss" scoped>
 .works-panel {
+  position: relative;
   width: 100%;
   height: 100%;
 }

@@ -15,14 +15,13 @@
           <div class="years">
             <p>
               <span>{{ year }}年</span>
-              <el-tag v-if="tag" class="post-tag" type="success" round closable @close="handleCloseTag">{{ tag }}</el-tag>
+              <el-tag v-if="tag && index === 0" class="post-tag" type="success" round closable @close="handleCloseTag">{{
+                tag }}</el-tag>
             </p>
 
-            <p>
-              <i class="rank-icon" v-if="index === 0" @click="rankChanged">
-                <svg-icon :name="iconType"></svg-icon>
-              </i>
-            </p>
+            <i class="rank-icon" v-if="index === 0" @click="rankChanged">
+              <svg-icon :name="iconType"></svg-icon>
+            </i>
           </div>
 
           <ul>
@@ -65,7 +64,7 @@ watch(
   async (val) => {
     if (val) {
       const q = getUrlParams(val).get('tag');
-    
+
       tag.value = q;
       sidebar.value = usePostList(posts, q || '', iconType.value === 'down' ? 1 : 0);
     }
@@ -194,7 +193,7 @@ const handleCloseTag = () => {
     margin: 2em auto;
 
     .posts {
-      padding: 0; 
+      padding: 0;
     }
 
     .post-title-name {
