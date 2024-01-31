@@ -1,6 +1,6 @@
 <template>
   <section class="img-to-url">
-    <el-upload class="uploader" :show-file-list="false" :on-success="handleAvatarSuccess"
+    <el-upload class="uploader" action="#" :show-file-list="false" :on-success="handleAvatarSuccess"
       :before-upload="beforeAvatarUpload">
       <img v-if="imageUrl" :src="imageUrl" class="uploaded-img" />
 
@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import { ElUpload, ElIcon, ElMessage, ElButton, vLoading, ElLoading  } from 'element-plus';
+import { ElUpload, ElIcon, ElMessage, ElButton, ElLoading  } from 'element-plus';
 import { Plus } from '@element-plus/icons-vue'
 import { ref } from 'vue';
 import { file2Blob, blob2Base64, useCopy, copyToClipboard } from '@blog/hooks'

@@ -29,7 +29,7 @@ tag: 工具
   </template>
 </el-input>
 
-<template v-if="isShowImg">
+<template v-if="isShowImg && inputVal.length">
   <div style="margin: 20px 0;">
     <zoom-img :src="inputVal" title="预览图片"/>
   </div>
@@ -37,7 +37,7 @@ tag: 工具
 
 <script setup>
   import Img2Url from '@blog/img2url';
-  import { ref } from 'vue';
+  import { ref, watch } from 'vue';
   import { ElInput, ElButton } from 'element-plus';
   import { SetUp } from '@element-plus/icons-vue'
   
@@ -48,6 +48,15 @@ tag: 工具
   const handleShowImg = () => {
     isShowImg.value = true;
   }
+
+  watch(
+    () => inputVal.value, 
+    (val) => {
+      if (!val.length) {
+        isShowImg.value = false;
+      }
+    }
+  )
 </script>
 
 <style lang="scss">
