@@ -4,3 +4,31 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+body {
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+}
+
+.Layout {
+  .VPContent {
+    display: flex;
+  }
+
+  .VPPage {
+    flex-grow: 1;
+
+    & > div {
+      height: 100%;
+
+      & > div {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.NotFound {
+  width: 100%;
+}

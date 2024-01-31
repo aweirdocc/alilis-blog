@@ -7,6 +7,7 @@ import path from 'path';
 function initNavData() {
   return [
     { text: "首页", link: "index" },
+    { text: "帖帖板", link: "works-panel" },
     { text: "图库", link: "gallery" },
   ]
 }

@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, watch } from 'vue';
+import { reactive, watch } from 'vue';
 import { ImageViewer as TImageViewer } from 'tdesign-vue-next';
 import { IGalleryItem } from './types'
 // 引入组件库的少量全局样式变量
@@ -50,19 +50,25 @@ const onOpen = (i) => {
 </script>
 
 <style lang="scss" scoped>
+.gallery {
+  height: 100%;
+  padding: 20px 0;
+}
+
 .gallery-bar {
   display: grid;
   grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(auto-fill, 260px);
   justify-items: center;
   grid-gap: 20px 0;
   width: 70%;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 
 
 .preview-img {
   width: 200px;
-  height: 260px;
+  height: 100%;
   display: inline-flex;
   position: relative;
   justify-content: center;

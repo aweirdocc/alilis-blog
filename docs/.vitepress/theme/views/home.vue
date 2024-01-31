@@ -112,7 +112,7 @@ const handleCloseTag = () => {
 .posts-bar {
   position: relative;
   width: 55%;
-  height: 100%;
+  // height: 100%;
   margin: 4em auto;
   z-index: 9;
 

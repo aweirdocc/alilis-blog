@@ -1,0 +1,16 @@
+{
+  "name": "@blog/works-panel",
+  "version": "1.0.0",
+  "description": "一个可拖拽的帖帖板",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Alilis",
+  "license": "ISC",
+  "dependencies": {
+    "@logicflow/core": "^1.2.18",
+    "@logicflow/extension": "^1.2.19"
+  }
+}
