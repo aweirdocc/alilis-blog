@@ -56,7 +56,9 @@ const iconColor = useColor();
 const tag = ref('');
 
 const queryParams = computed(() => {
-  return `${window.location.href}`
+  if (typeof window != 'undefined') { 
+    return `${window.location.href}`
+  }
 })
 
 watch(
@@ -88,13 +90,17 @@ const handleTag = (tag) => {
   const path = router.route.path;
   const params = setObjToUrlParams(path, { tag });
 
-  window.location.search = params;
+  if (typeof window != 'undefined') { 
+    window.location.search = params;
+  }
 }
 
 const handleCloseTag = () => {
   tag.value = '';
 
-  window.location.search = '';
+  if (typeof window != 'undefined') { 
+    window.location.search = '';
+  }
 }
 
 </script>
