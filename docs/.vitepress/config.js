@@ -94,6 +94,11 @@ export default defineConfig({
     // https://github.com/antfu/vite-ssg/issues/171
     ssr: {
       noExternal: ['element-plus']
+    },
+
+    build: {
+      cssMinify: true,
+      minify: true
     }
   },
 
