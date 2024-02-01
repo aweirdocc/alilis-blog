@@ -1,4 +1,3 @@
-import LogicFlow from "@logicflow/core";
 import "@logicflow/core/dist/style/index.css";
 
 import NodeRegister from "../nodes";
@@ -13,7 +12,7 @@ class LfUtil {
   }
 
   initLf() {
-    this.lf = new LogicFlow({
+    this.lf = new window.LogicFlow({
       container: this._el.value,
       grid: true,
       ...this.config
@@ -22,14 +21,14 @@ class LfUtil {
     this.registNodes();
 
     this.lf.render({
-      nodes: [
-        // {
-        //   type: "note",
-        //   x: 100,
-        //   y: 100,
-        //   properties: {},
-        // },
-      ]
+      // nodes: [
+      //   {
+      //     type: "note",
+      //     x: 100,
+      //     y: 100,
+      //     properties: {},
+      //   },
+      // ]
     });
   }
 

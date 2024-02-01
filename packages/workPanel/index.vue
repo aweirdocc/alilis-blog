@@ -3,48 +3,54 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, watch, reactive } from 'vue';
-  import { useColor } from '@blog/hooks';
-  
-  import LfUtil from './js/lfUtil';
+import { ref, onMounted, watch, reactive } from 'vue';
+import { useColor } from '@blog/hooks';
 
-  const panelBgColor = useColor('#fff', '#000');
-  const panelRef = ref(null);
-  const lfUtil = ref(null);
+import LfUtil from './js/lfUtil';
 
-  // 基础配置项
-  const config = reactive({
-    background: {
-      backgroundColor: panelBgColor
-    },
-    // 网格
-    grid: {
-      visible: false,
-    },
-    // 辅助对齐线
-    snapline: false,
-    // 选中时的配置
-    hideAnchors: true,
-    hoverOutline: false,
-    nodeSelectedOutline: false,
-    edgeSelectedOutline: false,
-    nodeTextEdit: false,
-    edgeTextEdit: false,
-  });
+const panelBgColor = useColor('#fff', '#000');
+const panelRef = ref(null);
+const lfUtil = ref(null);
 
-  onMounted(() => {
+// 基础配置项
+const config = reactive({
+  background: {
+    backgroundColor: panelBgColor
+  },
+  // 网格
+  grid: {
+    visible: false,
+  },
+  // 辅助对齐线
+  snapline: false,
+  // 选中时的配置
+  hideAnchors: true,
+  hoverOutline: false,
+  nodeSelectedOutline: false,
+  edgeSelectedOutline: false,
+  nodeTextEdit: false,
+  edgeTextEdit: false,
+});
+
+onMounted(() => {
+  // 解决打包时报错 'window is not undefined' 的问题
+  import('@logicflow/core').then(module => {
+    window.LogicFlow = module.default;
+
     lfUtil.value = new LfUtil(panelRef, config);
-  });
+  })
+});
 
-  // TODO: 配置切换后更新
-  // watch(
-  //   config,
-  //   (val) => {
-  //   },
-  //   {
-  //     deep: true,
-  //   }
-  // )
+
+// TODO: 配置切换后更新
+// watch(
+//   config,
+//   (val) => {
+//   },
+//   {
+//     deep: true,
+//   }
+// )
 </script>
 
 <style lang="scss" scoped>
