@@ -1,5 +1,5 @@
 import noteNodeRegister from './noteNode/index';
-import live2dRegister from './live2d/index';
+import live2dRegister from './live2dNode/index';
 
 
 export default class NodeRegister {
