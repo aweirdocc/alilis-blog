@@ -21,14 +21,14 @@ class LfUtil {
     this.registNodes();
 
     this.lf.render({
-      // nodes: [
-      //   {
-      //     type: "note",
-      //     x: 100,
-      //     y: 100,
-      //     properties: {},
-      //   },
-      // ]
+      nodes: [
+        {
+          type: "live2d",
+          x: 100,
+          y: 640,
+          properties: {},
+        },
+      ]
     });
   }
 

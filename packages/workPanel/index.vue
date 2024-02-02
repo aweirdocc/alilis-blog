@@ -30,6 +30,7 @@ const config = reactive({
   edgeSelectedOutline: false,
   nodeTextEdit: false,
   edgeTextEdit: false,
+  stopScrollGraph: true,
 });
 
 onMounted(() => {

@@ -33,6 +33,8 @@ export default defineConfig({
     ["meta", { name: "keywords", content: "Alilis,博客站,前端,工具,教程" }],
     ["meta", { name: "author", content: "Alilis" }],
 
+    // ["script", { src: "/libs/live2d.min.js" }],
+    ["script", { src: "/libs/live2dcubismcore.min.js" }],
     // 引入 Gitalk
     [
       "link",
