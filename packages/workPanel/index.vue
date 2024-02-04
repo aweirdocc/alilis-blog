@@ -3,14 +3,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch, reactive } from 'vue';
-import { useColor } from '@blog/hooks';
+import { ref, onMounted, onUnmounted, watch, reactive } from 'vue';
+import hooks, { useColor }  from '@blog/hooks';
 
 import LfUtil from './js/lfUtil';
 
 const panelBgColor = useColor('#fff', '#000');
 const panelRef = ref(null);
 const lfUtil = ref(null);
+const { usePixi } = hooks;
+
+const { destoryAllRenderer } = usePixi();
 
 // 基础配置项
 const config = reactive({
@@ -39,9 +42,18 @@ onMounted(() => {
     window.LogicFlow = module.default;
 
     lfUtil.value = new LfUtil(panelRef, config);
+
+    window.lf = lfUtil.value.lf;
   })
 });
 
+
+onUnmounted(() => {
+  lfUtil.value = null;
+  window.lf = null;
+  
+  destoryAllRenderer();
+}) 
 
 // TODO: 配置切换后更新
 // watch(

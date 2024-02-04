@@ -1,6 +1,7 @@
 import { useData } from 'vitepress';
 import { ref, unref, reactive, watch, onMounted } from 'vue';
 import figlet from 'figlet';
+import usePixi from './pixi'
 
 const toTimestamp = (date) => +new Date(date);
 
@@ -185,5 +186,9 @@ export default {
   usePostList,
   useColor,
   useFlglet,
-  useCopy
+  copyToClipboard,
+  useCopy,
+  file2Blob,
+  blob2Base64,
+  usePixi
 }
