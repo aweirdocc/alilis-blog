@@ -24,6 +24,7 @@ onMounted(async () => {});
 .live2d-node {
   width: 100%;
   height: 100%;
+  cursor: cell;
 
   canvas {
     width: 100%;

@@ -50,7 +50,12 @@ importers:
     specifiers: {}
 
   packages/hooks:
-    specifiers: {}
+    specifiers:
+      pixi-live2d-display: ^0.4.0
+      pixi.js: 6.x
+    dependencies:
+      pixi-live2d-display: registry.npmmirror.com/pixi-live2d-display/0.4.0
+      pixi.js: registry.npmmirror.com/pixi.js/6.5.10
 
   packages/img2url:
     specifiers: {}

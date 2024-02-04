@@ -1,10 +1,13 @@
 import { onMounted, onBeforeUnmount, ref, isRef, reactive } from 'vue';
 import * as PIXI from 'pixi.js';
 
-window.PIXI = PIXI;
+if (typeof window != 'undefined') {
+  window.PIXI = PIXI;
+}
+
+const pixiCache = ref([]);
 
 const usePixi = (config) => {
-  const pixiCache = ref([]);
   const model = ref(null);
   let pixiInstance = reactive({});
   
@@ -13,7 +16,7 @@ const usePixi = (config) => {
       view: isRef(viewRef) ? viewRef.value : viewRef,
       backgroundAlpha: 0,
     });
-
+    
     pixiCache.value.push(pixiInstance);
   }
 
@@ -30,7 +33,7 @@ const usePixi = (config) => {
       pixiCache.value.forEach(pixi => pixi.destroy());
 
       pixiCache.value = [];
-    }  
+    }
   }
 
   onMounted(async() => {
