@@ -231,4 +231,15 @@ const handleDownload = () => {
   margin-top: 100px;
   text-align: center;
 }
+
+@media screen and (max-width: 767px) {
+  /* 手机端样式 */
+  .couplet-detail {
+    font-size: 2rem;
+    padding: 10px;
+  }
+  .couplet-detail-title {
+    max-width: 100%;
+  }
+}
 </style>
