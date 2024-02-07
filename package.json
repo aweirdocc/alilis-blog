@@ -27,6 +27,7 @@
     "vitepress": "^1.0.0-rc.25"
   },
   "dependencies": {
+    "@blog/couplet": "workspace:^1.0.0",
     "@blog/figlet": "workspace:^1.0.0",
     "@blog/img2url": "workspace:^1.0.0",
     "@blog/works-panel": "workspace:^1.0.0",
