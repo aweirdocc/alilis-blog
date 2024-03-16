@@ -1,0 +1,18 @@
+{
+  "name": "@blog/pinyin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "alilis",
+  "license": "ISC",
+  "dependencies": {
+    "base-64": "^1.0.0",
+    "crypto-js": "^4.2.0",
+    "pinyin-pro": "^3.19.6",
+    "ws": "^8.16.0"
+  }
+}
