@@ -5,7 +5,10 @@
         fontSize: config.textSize + 'rem',
         lineHeight: config.textSize + 'rem',
       }" v-for="(item, index) in text" :key="index">
-        <i class="tone">{{ pinyinData[index] }}</i>
+        <i class="tone" :style="{
+        fontSize: config.toneSize + 'rem',
+        lineHeight: config.toneSize + 'rem',
+      }">{{ pinyinData[index] }}</i>
         {{ item }}
       </span>
     </p>
@@ -31,8 +34,8 @@ const props = defineProps({
 
       breakWord: ',',
 
-      textSize: 6,
-      toneSize: 16,
+      textSize: 1.5,
+      toneSize: 1,
     })
   }
 })
@@ -86,8 +89,6 @@ watch(
 
   .tone {
     position: absolute;
-    font-size: 22px;
-    line-height: 22px;
     top: 15px;
     left: 50%;
     transform: translateX(-50%);
