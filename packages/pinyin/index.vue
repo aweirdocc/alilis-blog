@@ -1,7 +1,7 @@
 <template>
   <div class="pinyin">
     <div class="pinyin-wrapper"> 
-      <text-block :text="words"></text-block>
+      <text-block :text="words" @click="handlePlay"></text-block>
 
       <div class="operation" :style="{
         backgroundColor: bg,
@@ -13,21 +13,23 @@
 </template>
 
 <script setup>
-  import { ref, onMounted } from 'vue';
+  import { ref, watch } from 'vue';
   import textBlock from './components/textBlock.vue';
   import { ElInput } from 'element-plus';
   import { useColor } from '@blog/hooks';
-  import { useWs } from './utils';
+  import { usePinyin } from './utils';
 
-  const ws = useWs();
   const words = ref('');
   const bg = useColor('rgba(247, 206, 101, 0.3)', 'rgba(232, 230, 225, 0.43)');
   const wordColor = useColor();
 
-  onMounted(() => {
-    console.log(ws)
-  });
+  function handlePlay() {
+    const pinyin = usePinyin(words.value);
 
+    watch(() => pinyin.ttsStatus.value, (status) => {
+      console.log(status)
+    })
+  }
 </script>
 
 <style lang="scss" scoped>
