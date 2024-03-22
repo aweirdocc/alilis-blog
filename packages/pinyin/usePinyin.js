@@ -71,7 +71,7 @@ function changeStatus(status) {
   ttsStatus.value = status;
 }
 
-export function usePinyin(text, options) {
+export default function usePinyin(text, options) {
   let ttsWS = null;
   const audioPlayer = createAudio();
   const url = getWebSocketUrl(config.key, config.secret);

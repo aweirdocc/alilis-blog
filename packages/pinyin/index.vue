@@ -6,7 +6,7 @@
       <div class="operation" :style="{
         backgroundColor: bg,
       }">
-        <el-input v-model.trim="words" placeholder="请输入汉字" clearable></el-input>
+        <el-input v-model="words" placeholder="请输入汉字" clearable></el-input>
       </div>
     </div>
   </div>
@@ -17,11 +17,13 @@
   import textBlock from './components/textBlock.vue';
   import { ElInput } from 'element-plus';
   import { useColor } from '@blog/hooks';
-  import { usePinyin } from './utils';
+  import usePinyin from './usePinyin';
+  import { getClientWidth } from '@weebat/utils';
 
   const words = ref('');
   const bg = useColor('rgba(247, 206, 101, 0.3)', 'rgba(232, 230, 225, 0.43)');
   const wordColor = useColor();
+  const pad = getClientWidth() < 450 ? '85%' : '40%';
 
   function handlePlay() {
     const pinyin = usePinyin(words.value);
@@ -44,7 +46,7 @@
 
   &-wrapper {
     position: relative;
-    width: 70%;
+    width: v-bind(pad);
     height: 100%;
   }
 
@@ -52,7 +54,7 @@
     position: absolute;
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 100%;
     height: 45px;
     left: 50%;
     bottom: 0;
