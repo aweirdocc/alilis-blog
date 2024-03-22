@@ -94,7 +94,7 @@ watch(
     lines.value = splitStringByPunctuation(val);
 
     pinyinData.value = lines.value.map(line => {
-      return pinyin(val, {
+      return pinyin(line, {
         toneType: config.isShowTone ? 'none' : 'symbol',
         type: 'array'
       })
