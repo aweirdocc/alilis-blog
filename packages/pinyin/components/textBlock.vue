@@ -1,22 +1,42 @@
 <template>
   <div class="text-block">
-    <p class="text-block-line">
+    <p class="text-block-line" v-for="(line, lineIdx) in lines" 
+    @mouseover="(text.length) && (isHover = true)" @mouseout="isHover = false"
+    :style="{
+    backgroundColor: isHover ? 'rgba(0, 0, 0, 0.02)' : 'transparent',
+    cursor: 'pointer',
+  }">
       <span class="text-block-item" :style="{
-        fontSize: config.textSize + 'rem',
-        lineHeight: config.textSize + 'rem',
-      }" v-for="(item, index) in text" :key="index">
+    fontSize: config.textSize + 'rem',
+    lineHeight: config.textSize + 'rem',
+  }" v-for="(item, textIdx) in line">
         <i class="tone" :style="{
-        fontSize: config.toneSize + 'rem',
-        lineHeight: config.toneSize + 'rem',
-      }">{{ pinyinData[index] }}</i>
+    fontSize: config.toneSize + 'rem',
+    lineHeight: config.toneSize + 'rem',
+  }">{{ pinyinData[lineIdx][textIdx] }}</i>
         {{ item }}
       </span>
     </p>
+
+    <el-icon v-show="isHover" :size="15" class="sound-icon">
+      <Headset />
+    </el-icon>
   </div>
 </template>
 
 <script setup>
 import { ref, watch, toRefs, computed } from 'vue';
+import { Headset } from '@element-plus/icons-vue';
+import { ElIcon } from 'element-plus';
+import { pinyin } from 'pinyin-pro';
+
+function splitStringByPunctuation(text) {
+  // 创建一个正则表达式，匹配常见的中英文标点符号
+  const punctuationRegex = /[，。！？、；：“”‘’（）《》【】\s]+/g;
+
+  // 使用正则表达式分割字符串
+  return text.split(punctuationRegex).filter(Boolean);
+}
 
 const props = defineProps({
   text: {
@@ -32,7 +52,7 @@ const props = defineProps({
       // 是否显示声调
       isShowTone: true,
 
-      breakWord: ',',
+      breakWord: '，',
 
       textSize: 1.5,
       toneSize: 1,
@@ -42,22 +62,29 @@ const props = defineProps({
 
 const { text, config } = toRefs(props);
 
-import { pinyin } from 'pinyin-pro';
-
 const pinyinData = ref('');
-
+const lines = ref([]);
+const isHover = ref(false);
 
 const gridLength = computed(() => {
-  return text.value.length < 8 ? text.value.length : 8;
+  const max = Math.max(...lines.value.map(line => line.length));
+  return max > 8 ? 9 : max;
 })
 
 watch(
   () => text.value,
   (val) => {
-    pinyinData.value = pinyin(val, {
-      toneType: config.isShowTone ? 'none' : 'symbol',
-      type: 'array'
+    lines.value = splitStringByPunctuation(val);
+
+    pinyinData.value = lines.value.map(line => {
+      return pinyin(val, {
+        toneType: config.isShowTone ? 'none' : 'symbol',
+        type: 'array'
+      })
     })
+  },
+  {
+    immediate: true,
   }
 );
 </script>
@@ -66,10 +93,9 @@ watch(
 .text-block {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  padding-bottom: 60px;
+  padding: 0 0 80px 0;
   overflow: auto;
+  position: relative;
 
   &-line {
     width: 100%;
@@ -93,5 +119,11 @@ watch(
     left: 50%;
     transform: translateX(-50%);
   }
+}
+
+.sound-icon {
+  position: absolute;
+  right: 10px;
+  top: 70px;
 }
 </style>

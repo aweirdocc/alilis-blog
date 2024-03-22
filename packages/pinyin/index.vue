@@ -6,7 +6,7 @@
       <div class="operation" :style="{
         backgroundColor: bg,
       }">
-        <el-input v-model="words" placeholder="请输入汉字" clearable></el-input>
+        <el-input v-model="words" placeholder="天青色等烟雨，而我在等你" clearable></el-input>
       </div>
     </div>
   </div>
@@ -62,13 +62,13 @@
     border-radius: 30px;
     padding: 0 20px;
 
-
     .el-input__wrapper {
       background-color: transparent !important;
       box-shadow: none;
     }
     .el-input__inner {
       color: v-bind(wordColor);
+      text-align: center;
     }
   }
 }
