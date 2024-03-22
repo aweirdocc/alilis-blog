@@ -1,8 +1,7 @@
 <template>
-  <div class="text-block">
-    <p class="text-block-line" v-for="(line, lineIdx) in lines" 
-    @mouseover="(text.length) && (isHover = true)" @mouseout="isHover = false"
-    :style="{
+  <div class="text-block" @click="handlePlay">
+    <p class="text-block-line" v-for="(line, lineIdx) in lines" @mouseover="(text.length) && (isHover = true)"
+      @mouseout="isHover = false" :style="{
     backgroundColor: isHover ? 'rgba(0, 0, 0, 0.02)' : 'transparent',
     cursor: 'pointer',
   }">
@@ -29,6 +28,7 @@ import { ref, watch, toRefs, computed } from 'vue';
 import { Headset } from '@element-plus/icons-vue';
 import { ElIcon } from 'element-plus';
 import { pinyin } from 'pinyin-pro';
+import usePinyin, { statusMap } from '../usePinyin';
 
 function splitStringByPunctuation(text) {
   // 创建一个正则表达式，匹配常见的中英文标点符号
@@ -65,11 +65,28 @@ const { text, config } = toRefs(props);
 const pinyinData = ref('');
 const lines = ref([]);
 const isHover = ref(false);
+const pinyinIns = ref(null);
+const throttle = ref(false);
 
 const gridLength = computed(() => {
   const max = Math.max(...lines.value.map(line => line.length));
   return max > 8 ? 9 : max;
 })
+
+function handlePlay() {
+  if (!throttle.value) {
+    pinyinIns.value = usePinyin(text.value);
+    throttle.value = true;
+
+    watch(() => pinyinIns.value.ttsStatus, (status) => {
+      console.log(status);
+      
+      if (status === statusMap[4]) { 
+        throttle.value = false;
+      }
+    })
+  }
+}
 
 watch(
   () => text.value,
@@ -123,7 +140,7 @@ watch(
 
 .sound-icon {
   position: absolute;
-  right: 10px;
-  top: 70px;
+  right: 5px;
+  top: 5px;
 }
 </style>

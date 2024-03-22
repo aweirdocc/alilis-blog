@@ -9,11 +9,12 @@ const config = {
   key: "6496fd30bab7968ddb8d63e10bbaceb6",
   secret: "Y2IyYjMxMzJlYzAyMWZmOGJhYmE3MTlm",
 }
-const statusMap = Object.freeze({
+export const statusMap = Object.freeze({
   0: "UNDEFINED",
   1: "CONNECTING",
-  2: "PLAY",
-  3: "STOP"
+  2: "COMMIX",
+  3: "PLAYING",
+  4: "DONE"
 });
 
 const ttsStatus = ref(statusMap['0']);
@@ -57,11 +58,11 @@ function createAudio() {
   const audioPlayer = new AudioPlayer("/libs");
 
   audioPlayer.onPlay = () => {
-    changeStatus(statusMap[2]);
+    changeStatus(statusMap[3]);
   };
 
   audioPlayer.onStop = (audioDatas) => {
-    console.log(audioDatas);
+    changeStatus(statusMap[4]);
   };
 
   return audioPlayer;
@@ -138,8 +139,9 @@ export default function usePinyin(text, options) {
     });
 
     if (jsonData.code === 0 && jsonData.data.status === 2) {
-      changeStatus(statusMap[3]);
       ttsWS.close();
+      
+      changeStatus(statusMap[2]);
     }
   };
 
