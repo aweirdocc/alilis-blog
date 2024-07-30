@@ -30,6 +30,7 @@
     "@blog/couplet": "workspace:^1.0.0",
     "@blog/figlet": "workspace:^1.0.0",
     "@blog/img2url": "workspace:^1.0.0",
+    "@blog/mapchart": "workspace:^1.0.0",
     "@blog/pinyin": "workspace:^",
     "@blog/works-panel": "workspace:^1.0.0",
     "@element-plus/icons-vue": "^2.3.1",
