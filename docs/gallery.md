@@ -16,7 +16,7 @@ sidebar: false
   const galleryGroups = ref([
     {
       name: 'Daily Life',
-      bannerImg: 'https://img.alilis.space/IMG_20231019_175823.jpg-alilis_img',
+      bannerImg: 'https://img.alilis.space/30160639.jpg-alilis_img',
       imgUrlList: [
         'https://img.alilis.space/IMG_20231019_175823.jpg-alilis_img',
         'https://img.alilis.space/IMG_20231119_160552.jpg-alilis_img',
@@ -25,7 +25,10 @@ sidebar: false
         'https://img.alilis.space/IMG_20231006_144324.jpg-alilis_img',
         'https://img.alilis.space/1705050380738.jpg-alilis_img',
         'https://img.alilis.space/a01e6782068ff9e525b00fa699e0edd.jpg-alilis_img',
-        'https://img.alilis.space/89345c04f8c7159143c94598af896dc.jpg-alilis_img'
+        'https://img.alilis.space/30160728.jpg-alilis_img',
+        'https://img.alilis.space/30160722.jpg-alilis_img',
+        'https://img.alilis.space/30160716.jpg-alilis_img',
+        'https://img.alilis.space/30160639.jpg-alilis_img',
       ],
       createDate: '2023-12-25'
     }
