@@ -8,8 +8,10 @@ tag: '随记'
 
 ## Jottings
 
-The wind is buffeting my face. 
-The sunlight is caressing my body. 
-And my gaze is firmly fixed on you.
+The wind is buffeting my face.     
+
+The sunlight is caressing my body.    
+
+And my gaze is firmly fixed on you.   
 
 -------
