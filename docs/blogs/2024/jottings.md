@@ -15,3 +15,7 @@ The sunlight is caressing my body.
 And my gaze is firmly fixed on you.   
 
 -------
+
+If that's the case, how can it be just you?
+
+-------
