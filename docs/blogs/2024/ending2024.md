@@ -8,7 +8,7 @@ tag: '随记'
 
 # 向前向前向前2025
 
-<zoom-img src="https://img.alilis.space/IMG_20240413_191914.jpg-alilis_img" height="450px"></zoom-img>
+<zoom-img src="https://img.alilis.space/IMG_20240413_191914.jpg-alilis_img" height="350px"></zoom-img>
 
 一丝从上个秋天呼啸着的风，从窗缝窜过，给了我一激灵，我看向窗外，原来是又下起了小雨，迷雾裹挟着这座城市。回想起来，当她决定分开以后，一下子生活也变得迟钝了些。一年将尽，这篇就作为年终总结，在这里啰里啰嗦地说说。
 
