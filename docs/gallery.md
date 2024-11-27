@@ -16,7 +16,7 @@ sidebar: false
   const galleryGroups = ref([
     {
       name: 'Daily Life',
-      bannerImg: 'https://img.alilis.space/IMG_20230805_165030.jpg-alilis_img',,
+      bannerImg: 'https://img.alilis.space/IMG_20230805_165030.jpg-alilis_img',
       imgUrlList: [
         'https://img.alilis.space/IMG_20230805_165030.jpg-alilis_img',
         'https://img.alilis.space/30160639.jpg-alilis_img',
