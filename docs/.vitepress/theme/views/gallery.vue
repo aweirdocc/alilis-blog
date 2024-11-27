@@ -68,7 +68,7 @@ const onOpen = (i) => {
 
 .preview-img {
   width: 200px;
-  height: 100%;
+  height: 260px;
   display: inline-flex;
   position: relative;
   justify-content: center;
