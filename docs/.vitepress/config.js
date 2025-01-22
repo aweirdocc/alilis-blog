@@ -40,7 +40,7 @@ export default defineConfig({
       "link",
       { rel: "stylesheet", href: "https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.css" },
     ],
-    ["script", { src: "https://cdn.bootcdn.net/ajax/libs/gitalk/1.8.0/gitalk.min.js" }],
+    ["script", { src: "/libs/gitalk.min.js" }],
   ],
 
   // https://vitepress.dev/reference/site-config#transformhead
