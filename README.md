@@ -1,5 +1,5 @@
 # My blog site
 
-site: [alilis](alilis.space)
+site: [alilis.space](alilis.space)
 
 
