@@ -23,6 +23,9 @@ importers:
       '@blog/pinyin':
         specifier: workspace:^
         version: link:packages/pinyin
+      '@blog/stack':
+        specifier: workspace:^
+        version: link:packages/stackPreview
       '@blog/works-panel':
         specifier: workspace:^1.0.0
         version: link:packages/workPanel
@@ -112,6 +115,12 @@ importers:
       ws:
         specifier: ^8.16.0
         version: 8.18.0
+
+  packages/stackPreview:
+    dependencies:
+      '@stackblitz/sdk':
+        specifier: ^1.11.0
+        version: 1.11.0
 
   packages/workPanel:
     dependencies:
@@ -2257,6 +2266,10 @@ packages:
     resolution: {integrity: sha512-OAPJUAtgeINhh/TAlUID4QTs53Njm7xzddaVlEs/SXwgtiD1tW22zAB/W1wdqfrpmikgaWQ9Fw6Ws+hsiRm5Vg==}
     dependencies:
       '@sinonjs/commons': 1.8.6
+    dev: false
+
+  /@stackblitz/sdk@1.11.0:
+    resolution: {integrity: sha512-DFQGANNkEZRzFk1/rDP6TcFdM82ycHE+zfl9C/M/jXlH68jiqHWHFMQURLELoD8koxvu/eW5uhg94NSAZlYrUQ==}
     dev: false
 
   /@sxzz/popperjs-es@2.11.7:
