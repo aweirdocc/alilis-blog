@@ -29,8 +29,7 @@ sidebar: false
         'https://img.alilis.space/30160728.jpg-alilis_img',
         'https://img.alilis.space/30160722.jpg-alilis_img',
         'https://img.alilis.space/30160716.jpg-alilis_img',
-        'https://img.alilis.space/20250904095349_7_5.jpg',
-        ''
+        'https://img.alilis.space/20250904095349_7_5.jpg-alilis_img',
       ],
       createDate: '2023-12-25'
     },
