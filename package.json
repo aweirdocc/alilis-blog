@@ -11,6 +11,15 @@
     "docs:serve": "vitepress serve docs"
   },
   "license": "MIT",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild"
+    ],
+    "overrides": {
+      "esbuild": "^0.25.0"
+    }
+  },
   "workspaces": {
     "packages": [
       "packages/*"
